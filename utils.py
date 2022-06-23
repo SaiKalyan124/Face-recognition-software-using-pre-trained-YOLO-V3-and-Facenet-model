@@ -1,16 +1,3 @@
-# *******************************************************************
-#
-# Author : Thanh Nguyen, 2018
-# Email  : sthanhng@gmail.com
-# Github : https://github.com/sthanhng
-#
-# BAP, AI Team
-# Face detection using the YOLOv3 algorithm
-#
-# Description : utils.py
-# This file contains the code of the parameters and help functions
-#
-# *******************************************************************
 
 
 import datetime
@@ -39,7 +26,6 @@ COLOR_YELLOW = (0, 255, 255)
 # Help functions
 # -------------------------------------------------------------------
 
-# Get the names of the output layers
 def get_outputs_names(net):
     # Get the names of all the layers in the network
     layers_names = net.getLayerNames()
@@ -49,7 +35,7 @@ def get_outputs_names(net):
     return [layers_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 
 
-# Draw the predicted bounding box
+
 def draw_predict(frame, conf, left, top, right, bottom):
     # Draw a bounding box.
     cv2.rectangle(frame, (left, top), (right, bottom), COLOR_YELLOW, 2)
