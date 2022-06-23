@@ -60,19 +60,11 @@ def get_image_vect(input_image_path):
   # PIL_image = Image.fromarray(np.uint8(cropped_frame)).convert('RGB')
   resized_frame = cv2.resize(cropped_frame, (160, 160), interpolation= cv2.INTER_LINEAR)
 
-  # print(PIL_image.size)
-
-  # If required, create a face detection pipeline using MTCNN:
-  # mtcnn = MTCNN()
+ 
 
   # Create an inception resnet (in eval mode):
   resnet = InceptionResnetV1(pretrained='vggface2').eval()
-  # Get cropped and prewhitened image tensor
-  # img_cropped = mtcnn(PIL_image)
-  # print(img_cropped.shape)
-
-  # print(img_cropped)
-  # Calculate embedding (unsqueeze to add batch dimension)
+ 
   trans = transforms.Compose([transforms.ToTensor()])
   img_cropped_tensor = trans(resized_frame.copy())
   
