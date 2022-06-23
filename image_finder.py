@@ -37,11 +37,3 @@ def get_matching_images(input_file, threshold, vect_dict):
   
 def eucledian_distance(vect1, vect2):
   return np.linalg.norm(vect1 - vect2)
-
-
-
-
-
-
-  # Get all images where ED(input_file, file) < threshold.
-
