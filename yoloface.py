@@ -1,24 +1,3 @@
-# *******************************************************************
-#
-# Author : Thanh Nguyen, 2018
-# Email  : sthanhng@gmail.com
-# Github : https://github.com/sthanhng
-#
-# BAP, AI Team
-# Face detection using the YOLOv3 algorithm
-#
-# Description : yoloface.py
-# The main code of the Face detection using the YOLOv3 algorithm
-#
-# *******************************************************************
-
-# Usage example:  python yoloface.py --image samples/outside_000001.jpg \
-#                                    --output-dir outputs/
-#                 python yoloface.py --video samples/subway.mp4 \
-#                                    --output-dir outputs/
-#                 python yoloface.py --src 1 --output-dir outputs/
-
-
 import argparse
 import sys
 import os
@@ -66,46 +45,18 @@ net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 
 
 def _main():
-    # wind_name = 'face detection using YOLOv3'
-    # cv2.namedWindow(wind_name, cv2.WINDOW_NORMAL)
+   
 
     input_image_path = "sample_data/sample.jpg"
     output_file = 'yoloface/output.jpg'
 
-    # if args.image:
-    #     if not os.path.isfile(args.image):
-    #         print("[!] ==> Input image file {} doesn't exist".format(args.image))
-    #         sys.exit(1)
-    #     cap = cv2.VideoCapture(args.image)
-    #     output_file = args.image[:-4].rsplit('/')[-1] + '_yoloface.jpg'
-    # elif args.video:
-    #     if not os.path.isfile(args.video):
-    #         print("[!] ==> Input video file {} doesn't exist".format(args.video))
-    #         sys.exit(1)
-    #     cap = cv2.VideoCapture(args.video)
-    #     output_file = args.video[:-4].rsplit('/')[-1] + '_yoloface.avi'
-    # else:
-    #     # Get data from the camera
-    #     cap = cv2.VideoCapture(args.src)
-
-    # Get the video writer initialized to save the output video
-    # if not args.image:
-    #     video_writer = cv2.VideoWriter(os.path.join(args.output_dir, output_file),
-    #                                    cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'),
-    #                                    cap.get(cv2.CAP_PROP_FPS), (
-    #                                        round(cap.get(cv2.CAP_PROP_FRAME_WIDTH)),
-    #                                        round(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))))
+    
+   
 
     while True:
         # has_frame, frame = cap.read()
         frame = cv2.imread(input_image_path)
-        # Stop the program if reached end of video
-        # if not has_frame:
-        #     print('[i] ==> Done processing!!!')
-        #     print('[i] ==> Output file is stored at', os.path.join(args.output_dir, output_file))
-        #     cv2.waitKey(1000)
-        #     break
-
+        
         # Create a 4D blob from a frame.
         blob = cv2.dnn.blobFromImage(frame, 1 / 255, (IMG_WIDTH, IMG_HEIGHT),
                                      [0, 0, 0], 1, crop=False)
@@ -145,18 +96,6 @@ def _main():
         im.save(output_file)
 
         print(frame.shape)
-        # # Save the output video to file
-        # if args.image:
-        #     cv2.imwrite(os.path.join(args.output_dir, output_file), frame.astype(np.uint8))
-        # else:
-        #     video_writer.write(frame.astype(np.uint8))
-
-        # cv2.imshow(, frame)
-
-        # key = cv2.waitKey(1)
-        # if key == 27 or key == ord('q'):
-        #     print('[i] ==> Interrupted by user!')
-        #     break
         break
 
     print('==> All done!')
